@@ -8,11 +8,11 @@ data class MovementAggregate(
     val date: LocalDate,
     val title: String,
     val amount: Double,
-    val category: String? = null,
+    val categoryId: String? = null
 )
 
 data class ConceptAggregate(
     val title: String,
-    val amount: String,
+    val amount: Double,
     val categories: Set<String>
 )

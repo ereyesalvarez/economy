@@ -13,11 +13,11 @@ data class Transaction(
 )
 
 data class Movement(
-    val id: String,
-    val date: LocalDate,
-    val title: String,
-    val category: String? = null,
-    val transactions: Set<Transaction> = setOf()
+    val id: String?,
+    var date: LocalDate,
+    var title: String,
+    var categoryId: String? = null,
+    val transactions: MutableSet<Transaction> = mutableSetOf()
 )
 
 data class Category(

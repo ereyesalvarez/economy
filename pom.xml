@@ -33,7 +33,7 @@
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-mongodb-panache</artifactId>
+            <artifactId>quarkus-mongodb-panache-kotlin</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

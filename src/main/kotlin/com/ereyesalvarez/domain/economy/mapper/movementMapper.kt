@@ -11,6 +11,6 @@ fun Movement.toMovementAggregate(): MovementAggregate {
         date,
         title,
         totalAmount,
-        category
+        categoryId
     )
 }
