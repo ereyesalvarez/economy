@@ -1,21 +1,18 @@
-package com.ereyesalvarez.poverty.application.infrastructure.mongo
+package com.ereyesalvarez.application.infrastructure.mongo
 
-import com.ereyesalvarez.application.infrastructure.mongo.CategoryEntity
-import com.ereyesalvarez.poverty.domain.movement.Category
+import com.ereyesalvarez.domain.economy.Category
 
 fun Category.toEntity(): CategoryEntity {
     val entity = CategoryEntity()
-    if(id !== null){
-        entity.id = ObjectId(id)
-    }
+    entity.id = id
     entity.title = title
     return entity
 }
 
 fun CategoryEntity.toDomain(): Category {
     return Category(
-        id?.toString() ?: throw RuntimeException("error at mapping"),
-        title ?: throw RuntimeException("error at mapping"),
+        id = id?.toString() ?: throw MongoMapperException("error at mapping"),
+        title = title ?: throw MongoMapperException("error at mapping"),
     )
 
 }

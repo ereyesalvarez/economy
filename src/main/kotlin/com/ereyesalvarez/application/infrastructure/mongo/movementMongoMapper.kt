@@ -1,27 +1,24 @@
-package com.ereyesalvarez.poverty.application.infrastructure.mongo
+package com.ereyesalvarez.application.infrastructure.mongo
 
-import com.ereyesalvarez.application.infrastructure.mongo.MovementEntity
-import com.ereyesalvarez.application.infrastructure.mongo.TransactionEntity
 import com.ereyesalvarez.domain.economy.Movement
 import com.ereyesalvarez.domain.economy.Transaction
-import com.ereyesalvarez.poverty.domain.movement.Movement
-import com.ereyesalvarez.poverty.domain.movement.Transaction
 import org.bson.types.ObjectId
 
 fun Movement.toEntity(): MovementEntity {
     val entity = MovementEntity()
-    if(id !== null){
-        entity.id = ObjectId(id)
-    }
+    entity.id = id
     entity.title = title
     entity.date = date
     entity.categoryId = categoryId
     entity.transactions = transactions.map {
         TransactionEntity(
-            it.id,
-            it.amount,
-            it.date,
-            it.concept
+            id = it.id,
+            date = it.date,
+            amount = it.amount,
+            concept = it.concept,
+            valueDate = it.valueDate,
+            balance = it.balance,
+            imported = it.imported
         )
     }.toMutableList()
     return entity
@@ -30,18 +27,22 @@ fun Movement.toEntity(): MovementEntity {
 fun MovementEntity.toDomain(): Movement {
     val domainTransactions = transactions?.map {
         Transaction(
-            it.id ?: throw RuntimeException("error at mapping"),
-            it.date ?: throw RuntimeException("error at mapping"),
-            it.amount ?: throw RuntimeException("error at mapping"),
-            it.concept ?: throw RuntimeException("error at mapping"),
+            id = it.id ?: throw MongoMapperException("error at mapping"),
+            date = it.date ?: throw MongoMapperException("error at mapping"),
+            valueDate = it.valueDate ?: throw MongoMapperException("error at mapping"),
+            concept = it.concept ?: throw MongoMapperException("error at mapping"),
+            amount = it.amount ?: throw MongoMapperException("error at mapping"),
+            balance = it.balance,
+            imported = it.imported ?: throw MongoMapperException("error at mapping")
         )
     }?.toMutableList() ?: mutableListOf()
     return Movement(
-        id?.toString() ?: throw RuntimeException("error at mapping"),
-        title ?: throw RuntimeException("error at mapping"),
-        date ?: throw RuntimeException("error at mapping"),
-        categoryId,
-        domainTransactions
+        id = id?.toString() ?: throw MongoMapperException("error at mapping"),
+        title = title ?: throw MongoMapperException("error at mapping"),
+        date = date ?: throw MongoMapperException("error at mapping"),
+        categoryId = categoryId,
+        comment = comment,
+        transactions = domainTransactions
     )
 
 }

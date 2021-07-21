@@ -5,8 +5,8 @@ import com.ereyesalvarez.domain.economy.Movement
 
 interface MovementPersistentPort{
     fun findAll(): List<Movement>
-    fun findById(id: String): Movement?
-    fun persist(movement: Movement)
-    fun findByConcept(concept: String): List<Movement>
+    fun findByTitle(title: String): List<Movement>
     fun updateCategoryIdByMovementId(id: String, categoryId: String)
+    fun updateCategoryIdListByMovementId(ids: List<String>, categoryId: String)
+    fun updateCategoryIdByTitle(title: String, categoryId: String)
 }
