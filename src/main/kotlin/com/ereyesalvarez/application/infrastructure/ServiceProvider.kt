@@ -29,4 +29,19 @@ class ServiceProvider(
     @Produces
     @ApplicationScoped
     fun movementSetCategoryByIdUseCase(): MovementSetCategoryByIdUseCase = MovementSetCategoryByIdService(movementPersistentPort)
+
+    @Produces
+    @ApplicationScoped
+    fun categoryByConceptGetUseCase(): CategoryByConceptGetUseCase = CategoryByConceptGetService()
+
+    @Produces
+    @ApplicationScoped
+    fun transactionImportListAndGenerateMovementUseCase(): TransactionImportListAndGenerateMovementUseCase =
+        TransactionImportListAndGenerateMovementService(categoryByConceptGetUseCase(), movementPersistentPort)
+
+    @Produces
+    @ApplicationScoped
+    fun movementSetCategoryByIdListUseCase(): MovementSetCategoryByIdListUseCase =
+        MovementSetCategoryByIdListService(movementPersistentPort, categoryPersistentPort)
+
 }

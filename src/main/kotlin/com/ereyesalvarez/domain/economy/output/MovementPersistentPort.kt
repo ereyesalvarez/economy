@@ -9,4 +9,6 @@ interface MovementPersistentPort{
     fun updateCategoryIdByMovementId(id: String, categoryId: String)
     fun updateCategoryIdListByMovementId(ids: List<String>, categoryId: String)
     fun updateCategoryIdByTitle(title: String, categoryId: String)
+    fun persist(movement: Movement)
+    fun persistList(movement: Iterable<Movement>)
 }

@@ -2,6 +2,7 @@ package com.ereyesalvarez.application.adapter
 
 import com.ereyesalvarez.application.infrastructure.mongo.MovementEntity
 import com.ereyesalvarez.application.infrastructure.mongo.toDomain
+import com.ereyesalvarez.application.infrastructure.mongo.toEntity
 import com.ereyesalvarez.domain.economy.Movement
 import com.ereyesalvarez.domain.economy.output.MovementPersistentPort
 import javax.enterprise.context.ApplicationScoped
@@ -25,5 +26,13 @@ class MovementPersistAdapter: MovementPersistentPort {
 
     override fun updateCategoryIdListByMovementId(ids: List<String>, categoryId: String) {
         MovementEntity.updateCategoryIdByIds(ids, categoryId)
+    }
+
+    override fun persist(movement: Movement) {
+        movement.toEntity().persist()
+    }
+
+    override fun persistList(movement: Iterable<Movement>) {
+        MovementEntity.persist(movement.map { it.toEntity() })
     }
 }

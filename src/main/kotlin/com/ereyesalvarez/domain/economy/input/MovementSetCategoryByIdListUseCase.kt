@@ -1,5 +1,5 @@
 package com.ereyesalvarez.domain.economy.input
 
-interface ConceptSetCategoryByIdListUseCase {
+interface MovementSetCategoryByIdListUseCase {
     fun execute(ids: List<String>, categoryId: String)
 }
