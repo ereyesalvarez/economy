@@ -9,18 +9,21 @@ import javax.ws.rs.Produces
 
 class ServiceProvider(
     private val movementPersistentPort: MovementPersistentPort,
-    private val categoryPersistentPort: CategoryPersistentPort) {
+    private val categoryPersistentPort: CategoryPersistentPort
+) {
     @Produces
     @ApplicationScoped
     fun categoryFindAllUseCase(): CategoryFindAllUseCase = CategoryFindAllService(categoryPersistentPort)
 
     @Produces
     @ApplicationScoped
-    fun conceptFindAllDistinctUseCase(): ConceptFindAllDistinctUseCase = ConceptFindAllDistinctService(movementFindAllUseCase())
+    fun conceptFindAllDistinctUseCase(): ConceptFindAllDistinctUseCase =
+        ConceptFindAllDistinctService(movementFindAllUseCase())
 
     @Produces
     @ApplicationScoped
-    fun conceptSetCategoryByIdUseCase(): ConceptSetCategoryByIdUseCase = ConceptSetCategoryByIdService(movementPersistentPort, categoryPersistentPort)
+    fun conceptSetCategoryByIdUseCase(): ConceptSetCategoryByIdUseCase =
+        ConceptSetCategoryByIdService(movementPersistentPort, categoryPersistentPort)
 
     @Produces
     @ApplicationScoped
@@ -28,7 +31,8 @@ class ServiceProvider(
 
     @Produces
     @ApplicationScoped
-    fun movementSetCategoryByIdUseCase(): MovementSetCategoryByIdUseCase = MovementSetCategoryByIdService(movementPersistentPort)
+    fun movementSetCategoryByIdUseCase(): MovementSetCategoryByIdUseCase =
+        MovementSetCategoryByIdService(movementPersistentPort)
 
     @Produces
     @ApplicationScoped
@@ -43,5 +47,9 @@ class ServiceProvider(
     @ApplicationScoped
     fun movementSetCategoryByIdListUseCase(): MovementSetCategoryByIdListUseCase =
         MovementSetCategoryByIdListService(movementPersistentPort, categoryPersistentPort)
+
+    @Produces
+    @ApplicationScoped
+    fun categoryCreateUseCase(): CategoryCreateUseCase = CategoryCreateService(categoryPersistentPort)
 
 }
