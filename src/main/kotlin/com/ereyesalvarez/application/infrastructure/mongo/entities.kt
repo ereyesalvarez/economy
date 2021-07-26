@@ -47,6 +47,8 @@ class CategoryEntity : PanacheMongoEntityBase() {
 
     var id: String? = null
     var title: String? = null
+    var group: String? = null
+
 }
 
 @MongoEntity(collection = "users")

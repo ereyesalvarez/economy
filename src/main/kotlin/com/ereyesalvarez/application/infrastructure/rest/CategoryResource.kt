@@ -24,7 +24,7 @@ class CategoryResource(
     @POST
     @RolesAllowed("USER")
     @Produces(MediaType.APPLICATION_JSON)
-    fun createCategory(input: CategoryCreateDTO) = categoryCreateUseCase.execute(input.categoryTitle)
+    fun createCategory(input: CategoryCreateDTO) = categoryCreateUseCase.execute(input.categoryTitle, input.categoryGroup)
 
     @GET
     @Path("aggregate")

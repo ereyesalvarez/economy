@@ -35,6 +35,16 @@ fun generateMockMovement(categoryId: String?): Movement {
     )
 }
 
+fun generateMockMovement(date: LocalDate): Movement {
+    val transaction = generateMockTransaction(date)
+    val transactions = mutableListOf(transaction)
+    return Movement(
+        title = transaction.concept,
+        date = transaction.date,
+        transactions = transactions
+    )
+}
+
 fun generateMockTransaction(): Transaction {
     return generateMockTransaction(LocalDate.now().minusDays(3))
 }

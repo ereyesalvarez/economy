@@ -1,5 +1,5 @@
 package com.ereyesalvarez.domain.economy.input
 
 interface CategoryCreateUseCase {
-    fun execute(categoryTitle: String)
+    fun execute(categoryTitle: String, categoryGroup: String? = null)
 }
