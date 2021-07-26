@@ -12,9 +12,10 @@ class ConceptFindAllDistinctService(private val movementFindAllUseCase: Movement
             .groupBy { it.title }
         return grouped.map {
             ConceptAggregate(
-                it.key,
-                it.value.fold(0.0) { acc, movementAggregate -> acc + movementAggregate.amount },
-                it.value.distinctBy { movementAggregate -> movementAggregate.categoryId }
+                title = it.key,
+                amount = it.value.fold(0.0) { acc, movementAggregate -> acc + movementAggregate.amount },
+                count = it.value.count(),
+                categories = it.value.distinctBy { movementAggregate -> movementAggregate.categoryId }
                     .mapNotNull { movementAggregate -> movementAggregate.categoryId }
                     .toSet()
             )
