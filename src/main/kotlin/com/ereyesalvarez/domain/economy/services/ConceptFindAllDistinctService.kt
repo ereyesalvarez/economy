@@ -3,7 +3,6 @@ package com.ereyesalvarez.domain.economy.services
 import com.ereyesalvarez.domain.economy.ConceptAggregate
 import com.ereyesalvarez.domain.economy.input.ConceptFindAllDistinctUseCase
 import com.ereyesalvarez.domain.economy.input.MovementFindAllUseCase
-import com.ereyesalvarez.domain.economy.output.MovementPersistentPort
 
 class ConceptFindAllDistinctService(private val movementFindAllUseCase: MovementFindAllUseCase) :
     ConceptFindAllDistinctUseCase {

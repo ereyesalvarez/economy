@@ -1,7 +1,7 @@
 FROM maven:3.6.3-jdk-11 as compiler
 WORKDIR compwork
 COPY . .
-RUN mvn -q package
+RUN mvn -q package -DskipTests
 
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4

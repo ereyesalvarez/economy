@@ -2,7 +2,6 @@ package com.ereyesalvarez.domain.economy
 
 import com.ereyesalvarez.util.generateDomainId
 import java.time.LocalDate
-import java.util.*
 
 data class Transaction(
     val id: String = generateDomainId(),
@@ -25,5 +24,6 @@ data class Movement(
 
 data class Category(
     val id: String = generateDomainId(),
-    val title: String
+    val title: String,
+    val group: String? = null
 )

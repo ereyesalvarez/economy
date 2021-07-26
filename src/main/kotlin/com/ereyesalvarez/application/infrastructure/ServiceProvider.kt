@@ -52,4 +52,8 @@ class ServiceProvider(
     @ApplicationScoped
     fun categoryCreateUseCase(): CategoryCreateUseCase = CategoryCreateService(categoryPersistentPort)
 
+    @Produces
+    @ApplicationScoped
+    fun categoryGetAggregateInfoUseCase(): CategoryGetAggregateInfoUseCase =
+        CategoryGetAggregateInfoService(movementFindAllUseCase(), categoryFindAllUseCase())
 }

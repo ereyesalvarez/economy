@@ -38,6 +38,6 @@ class TransactionImportListAndGenerateMovementService(
         // Crear el movimiento y asociar la transacción, si hay categoría asignarla
         val movement = Movement(title = command.concept, date = command.date, categoryId = category?.id)
         movement.transactions.add(transaction)
-        return movement;
+        return movement
     }
 }

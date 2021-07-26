@@ -14,6 +14,12 @@ data class MovementAggregate(
 data class ConceptAggregate(
     val title: String,
     val amount: Double,
-    val count: Int =  0,
+    val count: Int = 0,
     val categories: Set<String>
+)
+
+data class CategoryAggregate(
+    val title: String,
+    val amount: Double,
+    val count: Int = 0
 )

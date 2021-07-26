@@ -1,7 +1,6 @@
 package com.ereyesalvarez.application.infrastructure.mongo
 
 import io.quarkus.mongodb.panache.MongoEntity
-import io.quarkus.mongodb.panache.kotlin.PanacheMongoCompanion
 import io.quarkus.mongodb.panache.kotlin.PanacheMongoCompanionBase
 import io.quarkus.mongodb.panache.kotlin.PanacheMongoEntityBase
 import java.time.LocalDate
@@ -44,6 +43,7 @@ class CategoryEntity : PanacheMongoEntityBase() {
     companion object : PanacheMongoCompanionBase<CategoryEntity, String> {
         fun findByTitle(title: String) = CategoryEntity.find("title", title).firstResult()
     }
+
     var id: String? = null
     var title: String? = null
 }

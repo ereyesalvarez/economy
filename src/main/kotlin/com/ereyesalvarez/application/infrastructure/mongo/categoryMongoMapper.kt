@@ -11,7 +11,7 @@ fun Category.toEntity(): CategoryEntity {
 
 fun CategoryEntity.toDomain(): Category {
     return Category(
-        id = id?.toString() ?: throw MongoMapperException("error at mapping"),
+        id = id ?: throw MongoMapperException("error at mapping"),
         title = title ?: throw MongoMapperException("error at mapping"),
     )
 

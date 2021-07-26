@@ -1,10 +1,8 @@
 package com.ereyesalvarez.application.infrastructure.rest
 
 import com.ereyesalvarez.domain.economy.ConceptAggregate
-import com.ereyesalvarez.domain.economy.input.CategoryByConceptGetUseCase
 import com.ereyesalvarez.domain.economy.input.ConceptFindAllDistinctUseCase
 import com.ereyesalvarez.domain.economy.input.ConceptSetCategoryByIdUseCase
-import com.ereyesalvarez.domain.economy.input.MovementSetCategoryByIdUseCase
 import javax.annotation.security.RolesAllowed
 import javax.ws.rs.GET
 import javax.ws.rs.PUT

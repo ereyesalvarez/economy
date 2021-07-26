@@ -16,6 +16,7 @@ class MovementPersistAdapter: MovementPersistentPort {
     override fun findByTitle(title: String): List<Movement> {
         return MovementEntity.findByTitle(title).map { it.toDomain() }
     }
+
     override fun updateCategoryIdByMovementId(id: String, categoryId: String) {
         MovementEntity.updateCategoryIdById(id, categoryId)
     }

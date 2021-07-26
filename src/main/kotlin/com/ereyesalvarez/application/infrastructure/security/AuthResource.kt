@@ -2,7 +2,9 @@ package com.ereyesalvarez.application.infrastructure.security
 
 import javax.annotation.security.PermitAll
 import javax.enterprise.context.RequestScoped
-import javax.ws.rs.*
+import javax.ws.rs.POST
+import javax.ws.rs.Path
+import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
 

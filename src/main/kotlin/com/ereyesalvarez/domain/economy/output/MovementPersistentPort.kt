@@ -1,9 +1,8 @@
-
 package com.ereyesalvarez.domain.economy.output
 
 import com.ereyesalvarez.domain.economy.Movement
 
-interface MovementPersistentPort{
+interface MovementPersistentPort {
     fun findAll(): List<Movement>
     fun findByTitle(title: String): List<Movement>
     fun updateCategoryIdByMovementId(id: String, categoryId: String)

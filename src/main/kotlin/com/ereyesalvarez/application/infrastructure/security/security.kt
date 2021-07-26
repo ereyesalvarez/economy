@@ -1,7 +1,7 @@
 package com.ereyesalvarez.application.infrastructure.security
 
-import com.ereyesalvarez.application.infrastructure.mongo.UserEntity
 import com.ereyesalvarez.application.infrastructure.config.JWTProperties
+import com.ereyesalvarez.application.infrastructure.mongo.UserEntity
 import io.quarkus.security.UnauthorizedException
 import io.smallrye.jwt.build.Jwt
 import org.eclipse.microprofile.config.inject.ConfigProperty

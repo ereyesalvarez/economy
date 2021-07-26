@@ -18,5 +18,5 @@ class TransactionResource(
     @Path("import")
     @RolesAllowed("USER")
     @Produces(MediaType.APPLICATION_JSON)
-    fun addInBatch(input: List<TransactionImportCommand>) =  transactionImportUseCase.execute(input)
+    fun addInBatch(input: List<TransactionImportCommand>) = transactionImportUseCase.execute(input)
 }

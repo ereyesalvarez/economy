@@ -2,7 +2,6 @@ package com.ereyesalvarez.application.infrastructure.mongo
 
 import com.ereyesalvarez.domain.economy.Movement
 import com.ereyesalvarez.domain.economy.Transaction
-import org.bson.types.ObjectId
 
 fun Movement.toEntity(): MovementEntity {
     val entity = MovementEntity()
@@ -37,7 +36,7 @@ fun MovementEntity.toDomain(): Movement {
         )
     }?.toMutableList() ?: mutableListOf()
     return Movement(
-        id = id?.toString() ?: throw MongoMapperException("error at mapping"),
+        id = id ?: throw MongoMapperException("error at mapping"),
         title = title ?: throw MongoMapperException("error at mapping"),
         date = date ?: throw MongoMapperException("error at mapping"),
         categoryId = categoryId,
