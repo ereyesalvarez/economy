@@ -9,6 +9,7 @@ import com.ereyesalvarez.domain.economy.input.TransactionImportListAndGenerateMo
 import com.ereyesalvarez.domain.economy.output.MovementPersistentPort
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import kotlin.math.abs
 
 class TransactionImportListAndGenerateMovementService(
     private val categoryByConceptGetUseCase: CategoryByConceptGetUseCase,
@@ -32,8 +33,8 @@ class TransactionImportListAndGenerateMovementService(
         val category: Category? = categoryByConceptGetUseCase.execute(command.concept)
         // Crear la transacción
         val transaction = Transaction(
-            date = command.date, amount = command.amount, valueDate = command.valueDate,
-            concept = command.concept, balance = command.balance, imported = true
+            date = command.date, amount = abs(command.amount), valueDate = command.valueDate,
+            concept = command.concept, balance = command.balance, imported = true, income = command.amount >= 0
         )
         // Crear el movimiento y asociar la transacción, si hay categoría asignarla
         val movement = Movement(title = command.concept, date = command.date, categoryId = category?.id)

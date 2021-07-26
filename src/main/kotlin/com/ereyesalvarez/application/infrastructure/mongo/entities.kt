@@ -35,7 +35,8 @@ data class TransactionEntity(
     var concept: String? = null,
     var valueDate: LocalDate? = null,
     var balance: Double? = null,
-    var imported: Boolean? = null
+    var imported: Boolean? = null,
+    var income: Boolean? = null
 )
 
 @MongoEntity(collection = "categories")

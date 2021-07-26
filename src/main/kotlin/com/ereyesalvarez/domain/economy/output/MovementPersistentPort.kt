@@ -1,6 +1,7 @@
 package com.ereyesalvarez.domain.economy.output
 
 import com.ereyesalvarez.domain.economy.Movement
+import com.ereyesalvarez.domain.economy.input.FilterCommand
 
 interface MovementPersistentPort {
     fun findAll(): List<Movement>

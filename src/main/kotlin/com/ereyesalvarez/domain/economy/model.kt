@@ -10,6 +10,7 @@ data class Transaction(
     val amount: Double,
     val valueDate: LocalDate? = date,
     val balance: Double?,
+    val income: Boolean = false,
     val imported: Boolean = false
 )
 
@@ -20,7 +21,17 @@ data class Movement(
     val transactions: MutableList<Transaction> = mutableListOf(),
     var categoryId: String? = null,
     val comment: String? = null
-)
+){
+    fun transactionSum(): Double {
+        return transactions.fold(0.0) { acc, transaction ->
+            if(transaction.income){
+                acc - transaction.amount
+            } else {
+                acc + transaction.amount
+            }
+        }
+    }
+}
 
 data class Category(
     val id: String = generateDomainId(),

@@ -2,12 +2,13 @@ package com.ereyesalvarez.domain.economy.services
 
 import com.ereyesalvarez.domain.economy.ConceptAggregate
 import com.ereyesalvarez.domain.economy.input.ConceptFindAllDistinctUseCase
+import com.ereyesalvarez.domain.economy.input.FilterCommand
 import com.ereyesalvarez.domain.economy.input.MovementFindAllUseCase
 
 class ConceptFindAllDistinctService(private val movementFindAllUseCase: MovementFindAllUseCase) :
     ConceptFindAllDistinctUseCase {
-    override fun execute(): List<ConceptAggregate> {
-        val grouped = movementFindAllUseCase.execute()
+    override fun execute(filter: FilterCommand): List<ConceptAggregate> {
+        val grouped = movementFindAllUseCase.execute(filter)
             .groupBy { it.title }
         return grouped.map {
             ConceptAggregate(

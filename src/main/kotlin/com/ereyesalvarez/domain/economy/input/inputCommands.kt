@@ -9,3 +9,9 @@ data class TransactionImportCommand(
     val valueDate: LocalDate = date,
     val balance: Double?,
 )
+
+data class FilterCommand(
+    val startDate: LocalDate? = null,
+    val endDate: LocalDate? = null,
+    val expenses:Boolean = true,
+)
