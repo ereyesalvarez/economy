@@ -1,14 +1,13 @@
 package com.ereyesalvarez.application.infrastructure.rest
 
 import com.ereyesalvarez.domain.economy.MovementAggregate
+import com.ereyesalvarez.domain.economy.input.FilterCommand
 import com.ereyesalvarez.domain.economy.input.MovementFindAllUseCase
 import com.ereyesalvarez.domain.economy.input.MovementSetCategoryByIdListUseCase
 import com.ereyesalvarez.domain.economy.input.MovementSetCategoryByIdUseCase
+import java.time.LocalDate
 import javax.annotation.security.RolesAllowed
-import javax.ws.rs.GET
-import javax.ws.rs.PUT
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
 @Path("/movement")
@@ -19,11 +18,14 @@ class MovementResource(
 ) {
 
     @GET
-    @Path("")
     @RolesAllowed("USER")
     @Produces(MediaType.APPLICATION_JSON)
-    fun list(): List<MovementAggregate> {
-        return movementFindAllUseCase.execute()
+    fun list(
+        @QueryParam("startDate") startDate: LocalDate? = null,
+        @QueryParam("startDate") endDate: LocalDate? = null,
+        @QueryParam("income") income: Boolean = false,
+    ): List<MovementAggregate> {
+        return movementFindAllUseCase.execute(FilterCommand(startDate, endDate, income))
     }
 
     @PUT
