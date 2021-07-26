@@ -21,7 +21,7 @@ class MovementPersistAdapter: MovementPersistentPort {
     }
 
     override fun updateCategoryIdByTitle(title: String, categoryId: String) {
-        MovementEntity.updateCategoryIdByTitle(categoryId, title)
+        MovementEntity.updateCategoryIdByTitle(title, categoryId)
     }
 
     override fun updateCategoryIdListByMovementId(ids: List<String>, categoryId: String) {
