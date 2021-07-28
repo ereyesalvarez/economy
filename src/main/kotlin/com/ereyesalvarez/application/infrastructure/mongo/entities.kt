@@ -43,6 +43,8 @@ data class TransactionEntity(
 class CategoryEntity : PanacheMongoEntityBase() {
     companion object : PanacheMongoCompanionBase<CategoryEntity, String> {
         fun findByTitle(title: String) = CategoryEntity.find("title", title).firstResult()
+        fun findByTitleAndCategory(title: String, group: String) = CategoryEntity.find("title = ?1 and group = ?2",
+            title, group).firstResult()
     }
 
     var id: String? = null

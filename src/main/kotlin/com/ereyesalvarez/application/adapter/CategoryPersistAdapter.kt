@@ -24,4 +24,8 @@ class CategoryPersistAdapter : CategoryPersistentPort {
     override fun persist(category: Category) {
         category.toEntity().persist()
     }
+
+    override fun findByTitleAndGroup(title: String, group: String): Category? {
+        return CategoryEntity.findByTitleAndCategory(title, group)?.toDomain()
+    }
 }
