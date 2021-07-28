@@ -11,9 +11,9 @@ const val STRING_LENGTH = 10
 const val RANDOM_SEED = 131
 const val ALPHANUMERIC_REGEX = "[a-zA-Z0-9]+"
 
-fun generateMockCategory() = Category(title = randomAlphanumeric(STRING_LENGTH))
+fun generateMockCategory() = Category(title = randomAlphanumeric(STRING_LENGTH), group =  randomAlphanumeric(STRING_LENGTH))
 
-fun generateMockCategory(id: String) = Category(id = id, title = randomAlphanumeric(STRING_LENGTH))
+fun generateMockCategory(id: String) = Category(id = id, title = randomAlphanumeric(STRING_LENGTH),  randomAlphanumeric(STRING_LENGTH))
 
 fun generateMockCategoryList(n: Int): List<Category> {
     return (1..n).map { generateMockCategory() }

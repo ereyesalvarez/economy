@@ -16,17 +16,18 @@ class CategoryGetAggregateInfoService(
         return movementFindAllUseCase.execute(filter)
             .groupBy { it.categoryId }
             .map {
-                val key = if (it.key == null) {
-                    "Sin clasificar"
+                val category = if (it.key == null) {
+                    null
                 } else {
-                    categories.first { it2 -> it2.id == it.key }.title
+                    categories.first { it2 -> it2.id == it.key }
                 }
                 val count = it.value.count()
                 val amount = it.value.fold(0.0) { acc, movementAggregate -> acc + movementAggregate.amount }
                 CategoryAggregate(
-                    title = key,
+                    title = category?.title ?: "Sin clasificar",
                     amount = amount,
-                    count = count
+                    count = count,
+                    group = category?.group ?: "Sin clasificar",
                 )
             }
     }

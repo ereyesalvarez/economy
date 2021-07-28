@@ -5,6 +5,6 @@ data class CategoryByMovementIdListDTO(val movementIdList: List<String>, val cat
 data class CategoryConceptDTO(val concept: String, val categoryId: String)
 data class CategoryCreateDTO (
     val categoryTitle: String,
-    val categoryGroup: String? = null
+    val categoryGroup: String
 )
 data class ErrorDto(val message: String?)

@@ -50,3 +50,5 @@ mvnw
 # Certificates
 /src/main/resources/privateKey.pem
 /src/main/resources/publicKey.pem
+# Application properties
+/src/main/resources/application.properties

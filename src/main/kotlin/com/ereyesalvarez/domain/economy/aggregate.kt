@@ -20,6 +20,7 @@ data class ConceptAggregate(
 
 data class CategoryAggregate(
     val title: String,
+    val group: String,
     val amount: Double,
     val count: Int = 0
 )

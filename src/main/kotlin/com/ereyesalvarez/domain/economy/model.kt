@@ -36,5 +36,5 @@ data class Movement(
 data class Category(
     val id: String = generateDomainId(),
     val title: String,
-    val group: String? = null
+    val group: String
 )
