@@ -3,11 +3,10 @@ package com.ereyesalvarez.application.infrastructure.rest
 import com.ereyesalvarez.domain.economy.input.CategoryCreateUseCase
 import com.ereyesalvarez.domain.economy.input.CategoryFindAllUseCase
 import com.ereyesalvarez.domain.economy.input.CategoryGetAggregateInfoUseCase
+import com.ereyesalvarez.domain.economy.input.FilterCommand
+import com.ereyesalvarez.util.parseLocalDate
 import javax.annotation.security.RolesAllowed
-import javax.ws.rs.GET
-import javax.ws.rs.POST
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
 @Path("/category")
@@ -29,7 +28,11 @@ class CategoryResource(
     @GET
     @Path("aggregate")
     @RolesAllowed("USER")
-    fun categoryGetAggregateInfo() = categoryGetAggregateInfoUseCase.execute()
+    fun categoryGetAggregateInfo(
+        @QueryParam("startDate") startDate: String? = null,
+        @QueryParam("endDate") endDate: String? = null,
+        @QueryParam("income") income: Boolean = false,
+    ) = categoryGetAggregateInfoUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
 
 
 }
