@@ -3,11 +3,10 @@ package com.ereyesalvarez.application.infrastructure.rest
 import com.ereyesalvarez.domain.economy.ConceptAggregate
 import com.ereyesalvarez.domain.economy.input.ConceptFindAllDistinctUseCase
 import com.ereyesalvarez.domain.economy.input.ConceptSetCategoryByIdUseCase
+import com.ereyesalvarez.domain.economy.input.FilterCommand
+import com.ereyesalvarez.util.parseLocalDate
 import javax.annotation.security.RolesAllowed
-import javax.ws.rs.GET
-import javax.ws.rs.PUT
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
 @Path("/movement/concept")
@@ -19,8 +18,12 @@ class ConceptResource(
     @Path("")
     @RolesAllowed("USER")
     @Produces(MediaType.APPLICATION_JSON)
-    fun findAll(): List<ConceptAggregate> {
-        return conceptFindAllDistinctUseCase.execute()
+    fun findAll(
+        @QueryParam("startDate") startDate: String? = null,
+        @QueryParam("endDate") endDate: String? = null,
+        @QueryParam("income") income: Boolean = false,
+    ): List<ConceptAggregate> {
+        return conceptFindAllDistinctUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
     }
 
     @PUT
