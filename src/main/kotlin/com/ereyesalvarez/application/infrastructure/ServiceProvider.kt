@@ -56,4 +56,9 @@ class ServiceProvider(
     @ApplicationScoped
     fun categoryGetAggregateInfoUseCase(): CategoryGetAggregateInfoUseCase =
         CategoryGetAggregateInfoService(movementFindAllUseCase(), categoryFindAllUseCase())
+
+    @Produces
+    @ApplicationScoped
+    fun categoryGetAggregateMonthUseCase(): CategoryGetAggregateMonthUseCase =
+        CategoryGetAggregateMonthService(movementFindAllUseCase(), categoryFindAllUseCase())
 }

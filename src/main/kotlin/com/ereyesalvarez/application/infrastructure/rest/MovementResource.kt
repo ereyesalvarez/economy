@@ -24,7 +24,7 @@ class MovementResource(
     fun list(
         @QueryParam("startDate") startDate: String? = null,
         @QueryParam("endDate") endDate: String? = null,
-        @QueryParam("income") income: Boolean = false,
+        @QueryParam("income") income: Boolean = true,
     ): List<MovementAggregate> {
         return movementFindAllUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
     }

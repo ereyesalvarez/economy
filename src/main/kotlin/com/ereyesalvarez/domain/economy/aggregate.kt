@@ -24,3 +24,9 @@ data class CategoryAggregate(
     val amount: Double,
     val count: Int = 0
 )
+
+data class CategoryExpenseByMonth(
+    val year: Int = 0,
+    val month: Int = 0,
+    val categories: List<CategoryAggregate>
+)

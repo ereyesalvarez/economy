@@ -21,7 +21,7 @@ class ConceptResource(
     fun findAll(
         @QueryParam("startDate") startDate: String? = null,
         @QueryParam("endDate") endDate: String? = null,
-        @QueryParam("income") income: Boolean = false,
+        @QueryParam("income") income: Boolean = true,
     ): List<ConceptAggregate> {
         return conceptFindAllDistinctUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
     }
