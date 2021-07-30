@@ -11,7 +11,8 @@ class CategoryResource(
     private val categoryFindAllUseCase: CategoryFindAllUseCase,
     private val categoryCreateUseCase: CategoryCreateUseCase,
     private val categoryGetAggregateInfoUseCase: CategoryGetAggregateInfoUseCase,
-    private val categoryGetAggregateMonthUseCase: CategoryGetAggregateMonthUseCase
+    private val categoryGetAggregateMonthUseCase: CategoryGetAggregateMonthUseCase,
+    private val categoryGetAggregateMonthUseByCategoryUseCase: CategoryGetAggregateMonthUseByCategoryUseCase
 ) {
     @GET
     @Path("")
@@ -41,6 +42,15 @@ class CategoryResource(
         @QueryParam("endDate") endDate: String? = null,
         @QueryParam("income") income: Boolean = true,
     ) = categoryGetAggregateMonthUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
+
+    @GET
+    @Path("aggregate/monthly/by-category")
+    @RolesAllowed("USER")
+    fun categoryGetAggregateMonthUseByCategory(
+        @QueryParam("startDate") startDate: String? = null,
+        @QueryParam("endDate") endDate: String? = null,
+        @QueryParam("income") income: Boolean = true,
+    ) = categoryGetAggregateMonthUseByCategoryUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
 
 
 }

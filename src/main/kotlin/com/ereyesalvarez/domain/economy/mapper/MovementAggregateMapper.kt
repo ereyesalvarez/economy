@@ -17,9 +17,9 @@ fun mapToMovementAggregateList(input: List<MovementAggregate>, categories: List<
             val amount = it.value.fold(0.0) { acc, movementAggregate -> acc + movementAggregate.amount }
             CategoryAggregate(
                 title = category?.title ?: "Sin clasificar",
+                group = category?.group ?: "Sin clasificar",
                 amount = amount,
                 count = count,
-                group = category?.group ?: "Sin clasificar",
             )
         }
 }
