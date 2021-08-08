@@ -1,6 +1,7 @@
 package com.ereyesalvarez.application.infrastructure.mongo
 
-import com.ereyesalvarez.domain.economy.Category
+import com.ereyesalvarez.domain.category.model.Category
+
 
 fun Category.toEntity(): CategoryEntity {
     val entity = CategoryEntity()

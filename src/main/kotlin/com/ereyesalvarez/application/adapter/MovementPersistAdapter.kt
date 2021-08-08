@@ -3,8 +3,8 @@ package com.ereyesalvarez.application.adapter
 import com.ereyesalvarez.application.infrastructure.mongo.MovementEntity
 import com.ereyesalvarez.application.infrastructure.mongo.toDomain
 import com.ereyesalvarez.application.infrastructure.mongo.toEntity
-import com.ereyesalvarez.domain.economy.Movement
-import com.ereyesalvarez.domain.economy.output.MovementPersistentPort
+import com.ereyesalvarez.domain.movement.model.Movement
+import com.ereyesalvarez.domain.movement.output.MovementPersistentPort
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped

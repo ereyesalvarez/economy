@@ -1,9 +1,11 @@
 package com.ereyesalvarez.application.infrastructure
 
-import com.ereyesalvarez.domain.economy.input.*
-import com.ereyesalvarez.domain.economy.output.CategoryPersistentPort
-import com.ereyesalvarez.domain.economy.output.MovementPersistentPort
-import com.ereyesalvarez.domain.economy.services.*
+import com.ereyesalvarez.domain.category.input.*
+import com.ereyesalvarez.domain.category.service.*
+import com.ereyesalvarez.domain.movement.input.*
+import com.ereyesalvarez.domain.category.output.CategoryPersistentPort
+import com.ereyesalvarez.domain.movement.output.MovementPersistentPort
+import com.ereyesalvarez.domain.movement.services.*
 import javax.enterprise.context.ApplicationScoped
 import javax.ws.rs.Produces
 
@@ -66,4 +68,9 @@ class ServiceProvider(
     @ApplicationScoped
     fun categoryGetAggregateMonthUseByCategoryUseCase(): CategoryGetAggregateMonthUseByCategoryUseCase =
         CategoryGetAggregateMonthUseByCategoryService(movementFindAllUseCase(), categoryFindAllUseCase())
+
+    @Produces
+    @ApplicationScoped
+    fun categoryGetGroupedByGroupMonthlyUseCase(): CategoryGetGroupedByGroupMonthlyUseCase =
+        CategoryGetGroupedByGroupMonthlyService(movementFindAllUseCase(), categoryFindAllUseCase())
 }

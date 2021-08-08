@@ -3,8 +3,8 @@ package com.ereyesalvarez.application.adapter
 import com.ereyesalvarez.application.infrastructure.mongo.CategoryEntity
 import com.ereyesalvarez.application.infrastructure.mongo.toDomain
 import com.ereyesalvarez.application.infrastructure.mongo.toEntity
-import com.ereyesalvarez.domain.economy.Category
-import com.ereyesalvarez.domain.economy.output.CategoryPersistentPort
+import com.ereyesalvarez.domain.category.model.Category
+import com.ereyesalvarez.domain.category.output.CategoryPersistentPort
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped

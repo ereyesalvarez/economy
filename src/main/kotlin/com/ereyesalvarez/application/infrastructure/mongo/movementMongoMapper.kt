@@ -1,7 +1,7 @@
 package com.ereyesalvarez.application.infrastructure.mongo
 
-import com.ereyesalvarez.domain.economy.Movement
-import com.ereyesalvarez.domain.economy.Transaction
+import com.ereyesalvarez.domain.movement.model.Movement
+import com.ereyesalvarez.domain.movement.model.Transaction
 
 fun Movement.toEntity(): MovementEntity {
     val entity = MovementEntity()

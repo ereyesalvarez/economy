@@ -1,6 +1,8 @@
 package com.ereyesalvarez.application.infrastructure.rest
 
-import com.ereyesalvarez.domain.economy.input.*
+import com.ereyesalvarez.domain.category.input.*
+import com.ereyesalvarez.domain.common.input.command.FilterCommand
+import com.ereyesalvarez.domain.movement.input.*
 import com.ereyesalvarez.util.parseLocalDate
 import javax.annotation.security.RolesAllowed
 import javax.ws.rs.*
@@ -12,7 +14,8 @@ class CategoryResource(
     private val categoryCreateUseCase: CategoryCreateUseCase,
     private val categoryGetAggregateInfoUseCase: CategoryGetAggregateInfoUseCase,
     private val categoryGetAggregateMonthUseCase: CategoryGetAggregateMonthUseCase,
-    private val categoryGetAggregateMonthUseByCategoryUseCase: CategoryGetAggregateMonthUseByCategoryUseCase
+    private val categoryGetAggregateMonthUseByCategoryUseCase: CategoryGetAggregateMonthUseByCategoryUseCase,
+    private val categoryGetGroupedByGroupMonthlyUseCase: CategoryGetGroupedByGroupMonthlyUseCase
 ) {
     @GET
     @Path("")
@@ -50,7 +53,7 @@ class CategoryResource(
         @QueryParam("startDate") startDate: String? = null,
         @QueryParam("endDate") endDate: String? = null,
         @QueryParam("income") income: Boolean = true,
-    ) = categoryGetAggregateMonthUseByCategoryUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
+    ) = categoryGetGroupedByGroupMonthlyUseCase.execute(FilterCommand(parseLocalDate(startDate), parseLocalDate(endDate), income))
 
 
 }

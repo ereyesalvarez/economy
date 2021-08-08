@@ -1,9 +1,9 @@
 package com.ereyesalvarez.application.infrastructure.rest
 
-import com.ereyesalvarez.domain.economy.ConceptAggregate
-import com.ereyesalvarez.domain.economy.input.ConceptFindAllDistinctUseCase
-import com.ereyesalvarez.domain.economy.input.ConceptSetCategoryByIdUseCase
-import com.ereyesalvarez.domain.economy.input.FilterCommand
+import com.ereyesalvarez.domain.common.input.command.FilterCommand
+import com.ereyesalvarez.domain.movement.ConceptAggregate
+import com.ereyesalvarez.domain.movement.input.ConceptFindAllDistinctUseCase
+import com.ereyesalvarez.domain.movement.input.ConceptSetCategoryByIdUseCase
 import com.ereyesalvarez.util.parseLocalDate
 import javax.annotation.security.RolesAllowed
 import javax.ws.rs.*

@@ -1,8 +1,8 @@
 package com.ereyesalvarez.test.util
 
-import com.ereyesalvarez.domain.economy.Category
-import com.ereyesalvarez.domain.economy.Movement
-import com.ereyesalvarez.domain.economy.Transaction
+import com.ereyesalvarez.domain.category.model.Category
+import com.ereyesalvarez.domain.movement.model.Movement
+import com.ereyesalvarez.domain.movement.model.Transaction
 import org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric
 import java.time.LocalDate
 import kotlin.random.Random

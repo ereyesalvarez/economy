@@ -1,12 +1,11 @@
 package com.ereyesalvarez.application.infrastructure.rest
 
-import com.ereyesalvarez.domain.economy.MovementAggregate
-import com.ereyesalvarez.domain.economy.input.FilterCommand
-import com.ereyesalvarez.domain.economy.input.MovementFindAllUseCase
-import com.ereyesalvarez.domain.economy.input.MovementSetCategoryByIdListUseCase
-import com.ereyesalvarez.domain.economy.input.MovementSetCategoryByIdUseCase
+import com.ereyesalvarez.domain.common.input.command.FilterCommand
+import com.ereyesalvarez.domain.movement.MovementAggregate
+import com.ereyesalvarez.domain.movement.input.MovementFindAllUseCase
+import com.ereyesalvarez.domain.movement.input.MovementSetCategoryByIdListUseCase
+import com.ereyesalvarez.domain.movement.input.MovementSetCategoryByIdUseCase
 import com.ereyesalvarez.util.parseLocalDate
-import java.time.LocalDate
 import javax.annotation.security.RolesAllowed
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType

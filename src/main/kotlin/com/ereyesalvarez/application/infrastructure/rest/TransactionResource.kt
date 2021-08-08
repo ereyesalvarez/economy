@@ -1,7 +1,7 @@
 package com.ereyesalvarez.application.infrastructure.rest
 
-import com.ereyesalvarez.domain.economy.input.TransactionImportCommand
-import com.ereyesalvarez.domain.economy.input.TransactionImportListAndGenerateMovementUseCase
+import com.ereyesalvarez.domain.movement.input.TransactionImportCommand
+import com.ereyesalvarez.domain.movement.input.TransactionImportListAndGenerateMovementUseCase
 import javax.annotation.security.RolesAllowed
 import javax.ws.rs.POST
 import javax.ws.rs.Path
